@@ -1,28 +1,68 @@
-ion-menu-button {
-  color: var(--ion-color-primary);
+/* Container para o histórico de chat */
+ion-list {
+  padding: 0;
 }
 
-#container {
+/* Estilo para as bolhas de chat */
+.chat-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+/* Estilo para a pergunta e resposta */
+.chat-bubble {
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 80%;
+  margin-bottom: 5px;
+}
+
+/* Pergunta - Lado esquerdo, fundo azul */
+.question {
+  background-color: #2196f3; /* Azul */
+  color: white;
+  align-self: flex-start; /* Alinhado à esquerda */
+  text-align: left;
+}
+
+/* Resposta - Lado direito, fundo verde */
+.answer {
+  background-color: #4caf50; /* Verde */
+  color: white;
+  align-self: flex-end; /* Alinhado à direita */
+  text-align: right;
+}
+
+/* Estilo do formulário de entrada */
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.chat-input ion-input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.chat-input ion-button {
+  margin-left: 10px;
+}
+
+/* Estilo para a mensagem de conclusão */
+.completed {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vh;
+  background-color: #c8e6c9; /* Verde claro */
+  color: black;
   text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
 }

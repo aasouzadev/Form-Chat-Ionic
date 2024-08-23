@@ -1,21 +1,45 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Cadastro de Usuário</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Exibe o histórico do chat -->
+  <ion-list>
+    <ion-item *ngFor="let chat of chatHistory">
+      <div class="chat-container">
+        <div class="chat-bubble question">
+          <ion-label>{{ chat.question }}</ion-label>
+        </div>
+        <div class="chat-bubble answer">
+          <ion-label>{{ chat.answer }}</ion-label>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Exibe a pergunta atual -->
+  <div
+    *ngIf="!completed && chatHistory.length === currentQuestionIndex"
+    class="chat-bubble question"
+  >
+    <ion-label>{{ questions[currentQuestionIndex] }}</ion-label>
+  </div>
+
+  <!-- Formulário de chat -->
+  <div *ngIf="!completed" class="chat-input">
+    <ion-input
+      [(ngModel)]="currentAnswer"
+      placeholder="Sua resposta"
+    ></ion-input>
+    <ion-button (click)="nextQuestion()" expand="block">Enviar</ion-button>
+  </div>
+
+  <!-- Mensagem de conclusão -->
+  <div *ngIf="completed" class="chat-bubble completed">
+    <ion-label
+      >Cadastro concluído! Obrigado, {{ chatHistory[0].answer }}.</ion-label
+    >
   </div>
 </ion-content>
